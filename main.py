@@ -1,3 +1,4 @@
+from kivy.uix.pagelayout import PageLayout
 from kivy.uix.dropdown import ScrollView
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
@@ -10,9 +11,54 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.metrics import dp
 from kivy.uix.scrollview import ScrollView
+from kivy.uix.screenmanager import ScreenManager, Screen
+import requests
 
+
+class HomeScreen(Screen):
+    pass
+
+class SettingsScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.counting = 0
+
+    def get_data_from_server(self):
+        try:
+            response = requests.get('http://localhost:2222/get')
+            # print("response => ", response)
+            json_d = response.json()
+            # print("data => ",json_d)
+            self.update_label_with_data(json_d['data'])
+        except requests.RequestException as e:
+            self.update_label_with_data(str(e))
+
+    def update_label_with_data(self, data):
+        self.counting += 1
+        self.ids.data_label.text = data + "fetch count: " + str(self.counting)
+
+class AboutScreen(Screen):
+    pass
+
+class LabHeaderWidget(BoxLayout):
+    pass
+
+class MainFrameWidget(BoxLayout):
+    pass
+
+class RelativeLayOutWidget(PageLayout):
+    pass
+
+class PageLayOutWidget(PageLayout):
+    pass
+
+### TestSize ###
 class TestingSizeHint(BoxLayout):
     pass
+
+class TestingGrid(GridLayout):
+    pass
+### TestSize end ###
 
 class ScrollViewWidget(ScrollView):
     pass

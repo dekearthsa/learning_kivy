@@ -3,9 +3,114 @@
 # GridLayOutWidget:
 # StackLayOutWidget:
 # ScrollViewWidget:
-TestingSizeHint:
+# TestingSizeHint:
+# PageLayOutWidget:
+# RelativeLayOutWidget:
+MainFrameWidget: 
     
+
+### start lab ###
+
+
+<MainFrameWidget>:
+    LabHeaderWidget:
+        
+
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Home Screen"
+            font_size: 32
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Settings Screen"
+            font_size: 32
+        Label:
+            id: data_label
+            text: "Data show here"
+            font_size: 32
+        Button:
+            text: "fetch data"
+            on_press: root.get_data_from_server()
+        
+<AboutScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "About Screen"
+            font_size: 32
+    
+<LabHeaderWidget>:
+    orientation: 'vertical'
+    BoxLayout:
+        size_hint_y: None
+        height: 100
+        spacing: 460  # Space between the buttons
+        padding: 10  # Padding around the layout
+        canvas.before:
+            Color: 
+                rgba: (.3,.3,.3,1)
+            Rectangle: 
+                pos:self.pos
+                size:self.size
+        Button:
+            text: "Home"
+            size_hint_x: None
+            width: 220
+            on_press: root.ids.screen_manager.current = 'home'
+
+        Button:
+            text: "Settings"
+            size_hint_x: None
+            width: 220
+            on_press: root.ids.screen_manager.current = 'settings'
+
+        Button:
+            text: "About"
+            size_hint_x: None
+            width: 220
+            on_press: root.ids.screen_manager.current = 'about'
+
+    ScreenManager:
+        id: screen_manager
+        HomeScreen:
+            name: 'home'
+
+        SettingsScreen:
+            name: 'settings'
+
+        AboutScreen:
+            name: 'about'
+    
+    
+
+### end lab ###
+
+<RelativeLayOutWidget>:
+    BoxLayout:
+        Label:
+            text: 'Left'
+        # Button:
+        #     text: 'Middle'
+        #     on_touch_down: print('Middle: {}'.format(args[1].pos))
+        RelativeLayout:
+            on_touch_down: print('Relative: {}'.format(args[1].pos))
+        Button:
+            text: 'Right'
+            on_touch_down: print('Right: {}'.format(args[1].pos))
+
+
+<PageLayOutWidget>:
+    TestingSizeHint:
+    ScrollViewWidget:
+    BoxLayOutWidget:
+
 <TestingSizeHint>:
+    orientation: 'horizontal'
     BoxLayout:
         orientation: 'vertical'
         Label:
@@ -17,27 +122,52 @@ TestingSizeHint:
                 Rectangle:
                     pos: self.pos
                     size: self.size
-    BoxLayout:
-        orientation: 'horizontal'
+    TestingGrid:
+    # BoxLayout:
+    #     orientation: 'horizontal'
+    #     canvas.before:
+    #         Color:
+    #             rgba: .5,.3,.1,1
+    #         Rectangle: 
+    #             pos:self.pos
+    #             size: self.size
+            
+    #     Label:
+    #         text: '12345'
+    #         size_hint: (.5,.2)
+    #         canvas.before:
+    #             Color:
+    #                 rgba: .5, .3, .5, 1  # Set background color to red
+    #             Rectangle:
+    #                 pos: self.pos
+    #                 size: self.size
+            
+<TestingGrid>:
+    rows: 3
+    Label:
+        text:'test-rows-1'
         canvas.before:
-            Color:
-                rgba: .5,.3,.1,1
+            Color: 
+                rgba: (.5,.1,.2,1)
             Rectangle: 
                 pos:self.pos
-                size: self.size
-            
-        Label:
-            text: '12345'
-            size_hint: (.5,.2)
-            canvas.before:
-                Color:
-                    rgba: .5, .3, .5, 1  # Set background color to red
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            
-            
-    
+                size:self.size
+    Label:
+        text:'test-rows-2'
+        canvas.before:
+            Color: 
+                rgba: (.7,.1,.1,1)
+            Rectangle: 
+                pos:self.pos
+                size:self.size
+    Label:
+        text:'test-rows-3'
+        canvas.before:
+            Color: 
+                rgba: (.9,.1,.2,1)
+            Rectangle: 
+                pos:self.pos
+                size:self.size
 
 <ScrollViewWidget>:
     StackLayOutWidget:
