@@ -16,12 +16,56 @@ MainFrameWidget:
     LabHeaderWidget:
         
 
+<GUIControlToolsWidge>:
+    rows: 3
+    GridLayout:
+        cols: 3
+        Label:
+            text:""
+        Button:
+            text: 'Upper'
+            # pos_hint: {'center_x': .5}
+            # size_hint_x: .3
+        Label:
+            text:""
+    GridLayout:
+        cols: 3
+        Button:
+            text: 'left'
+        Label:
+            text:"..."
+        Button:
+            text:'right'
+    GridLayout:
+        cols: 3
+        Label:
+            text:""
+        Button:
+            text: 'Down'
+            # pos_hint: {'center_x': .5}
+            # size_hint_x: .3
+        Label:
+            text:""
+
+
+
 <HomeScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: "Home Screen"
             font_size: 32
+        BoxLayout:
+            pos_hint: {"center_x":.5}
+            canvas.before:
+                Color:
+                    rgba: (.1,.1,.1,1)
+                Rectangle: 
+                    pos:self.pos
+                    size: self.size
+            GUIControlToolsWidge:
+        # GUIControlToolsWidge:
+                
 
 <SettingsScreen>:
     BoxLayout:
@@ -29,6 +73,15 @@ MainFrameWidget:
         Label:
             text: "Settings Screen"
             font_size: 32
+            bold: True
+            size_hint_y: .1
+            # size_hint_x: .5
+            canvas.before:
+                Color:
+                    rgba: (.6,.3,.5,1)
+                Rectangle: 
+                    pos:self.pos
+                    size:self.size
         Label:
             id: data_label
             text: "Data show here"

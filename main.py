@@ -15,6 +15,21 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import requests
 
 
+class GUIControlToolsWidge(GridLayout):
+
+    def push_upper(self):
+        pass
+
+    def push_left(self):
+        pass
+
+    def push_down(self):
+        pass
+
+    def push_right(self):
+        pass
+
+
 class HomeScreen(Screen):
     pass
 
