@@ -1,39 +1,41 @@
+from kivy.app import App
+from kivy.metrics import dp
+
 from kivy.uix.pagelayout import PageLayout
 from kivy.uix.dropdown import ScrollView
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.app import App
+
 from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
-from kivy.metrics import dp
+
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import ScreenManager, Screen
+
 import requests
 
-
 class GUIControlToolsWidge(GridLayout):
-
     def push_upper(self):
-        pass
+        print("Upper")
 
     def push_left(self):
-        pass
+        print("Left")
 
     def push_down(self):
-        pass
+        print("Down")
 
     def push_right(self):
-        pass
+        print("Right")
 
 
-class HomeScreen(Screen):
+class ManualScreen(Screen):
     pass
 
-class SettingsScreen(Screen):
+class AutoScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.counting = 0
@@ -52,7 +54,7 @@ class SettingsScreen(Screen):
         self.counting += 1
         self.ids.data_label.text = data + "fetch count: " + str(self.counting)
 
-class AboutScreen(Screen):
+class SettingScreen(Screen):
     pass
 
 class LabHeaderWidget(BoxLayout):
@@ -68,11 +70,13 @@ class PageLayOutWidget(PageLayout):
     pass
 
 ### TestSize ###
+
 class TestingSizeHint(BoxLayout):
     pass
 
 class TestingGrid(GridLayout):
     pass
+
 ### TestSize end ###
 
 class ScrollViewWidget(ScrollView):

@@ -7,14 +7,11 @@
 # PageLayOutWidget:
 # RelativeLayOutWidget:
 MainFrameWidget: 
-    
 
 ### start lab ###
 
-
 <MainFrameWidget>:
     LabHeaderWidget:
-        
 
 <GUIControlToolsWidge>:
     rows: 3
@@ -24,37 +21,38 @@ MainFrameWidget:
             text:""
         Button:
             text: 'Upper'
-            # pos_hint: {'center_x': .5}
-            # size_hint_x: .3
+            on_press: root.push_upper()
         Label:
             text:""
     GridLayout:
         cols: 3
         Button:
             text: 'left'
+            on_press: root.push_left()
         Label:
             text:"..."
         Button:
             text:'right'
+            on_press: root.push_right()
     GridLayout:
         cols: 3
         Label:
             text:""
         Button:
             text: 'Down'
-            # pos_hint: {'center_x': .5}
-            # size_hint_x: .3
+            on_press: root.push_down()
         Label:
             text:""
 
-
-
-<HomeScreen>:
+<ManualScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: "Home Screen"
             font_size: 32
+        Image:
+            source: ("./Screenshot 2567-09-25 at 10.52.12.png")
+            size: self.texture_size
         BoxLayout:
             pos_hint: {"center_x":.5}
             canvas.before:
@@ -65,13 +63,12 @@ MainFrameWidget:
                     size: self.size
             GUIControlToolsWidge:
         # GUIControlToolsWidge:
-                
 
-<SettingsScreen>:
+<AutoScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: "Settings Screen"
+            text: "Auto mode"
             font_size: 32
             bold: True
             size_hint_y: .1
@@ -89,21 +86,21 @@ MainFrameWidget:
         Button:
             text: "fetch data"
             on_press: root.get_data_from_server()
-        
-<AboutScreen>:
+
+<SettingScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: "About Screen"
             font_size: 32
-    
+
 <LabHeaderWidget>:
     orientation: 'vertical'
     BoxLayout:
         size_hint_y: None
         height: 100
-        spacing: 460  # Space between the buttons
-        padding: 10  # Padding around the layout
+        # spacing: 460  # Space between the buttons
+        # padding: 10  # Padding around the layout
         canvas.before:
             Color: 
                 rgba: (.3,.3,.3,1)
@@ -111,35 +108,33 @@ MainFrameWidget:
                 pos:self.pos
                 size:self.size
         Button:
-            text: "Home"
-            size_hint_x: None
-            width: 220
-            on_press: root.ids.screen_manager.current = 'home'
+            text: "Manual"
+            # size_hint_x: None
+            # width: 220
+            on_press: root.ids.screen_manager.current = 'manual'
 
         Button:
-            text: "Settings"
-            size_hint_x: None
-            width: 220
-            on_press: root.ids.screen_manager.current = 'settings'
+            text: "Auto mode"
+            # size_hint_x: None
+            # width: 220
+            on_press: root.ids.screen_manager.current = 'auto'
 
         Button:
-            text: "About"
-            size_hint_x: None
-            width: 220
-            on_press: root.ids.screen_manager.current = 'about'
+            text: "Setting"
+            # size_hint_x: None
+            # width: 220
+            on_press: root.ids.screen_manager.current = 'setting'
 
     ScreenManager:
         id: screen_manager
-        HomeScreen:
-            name: 'home'
+        ManualScreen:
+            name: 'manual'
 
-        SettingsScreen:
-            name: 'settings'
+        AutoScreen:
+            name: 'auto'
 
-        AboutScreen:
-            name: 'about'
-    
-    
+        SettingScreen:
+            name: 'setting'
 
 ### end lab ###
 
